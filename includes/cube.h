@@ -7,6 +7,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define HEIGHT 720
+#define WIDTH 1280
+
+
 typedef struct s_env
 {
 	void	*mlx;
