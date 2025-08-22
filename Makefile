@@ -8,15 +8,20 @@ SRC = src/main.c
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(INCLUDES) $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(INCLUDES) $(FLAGS)
 
 $(INCLUDES):
 	$(MAKE) -C includes/mlx
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) -I./includes -c $< -o $@
 
 fclean:
 	rm -rf $(OBJ)
 	rm -rf $(NAME)
+	$(MAKE) -C includes/mlx clean
+
+re: fclean all
+
+.PHONY: all fclean re
